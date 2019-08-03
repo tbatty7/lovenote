@@ -31,6 +31,16 @@ router.route('/account/create').post((req, res) => {
         });
 });
 
+// endpoint to validate user account and retrieve it
+router.route('/account/validate/:name/:password').get((req, res) => {
+    Account.find({name: req.params.name, password: req.params.password},(err, account) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(account);
+    })
+});
+
 app.use('/', router);
 
 app.listen(4000, () => console.log('Express server is running on port 4000'));
