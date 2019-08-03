@@ -11,6 +11,8 @@ import { LoginFailureComponent } from './components/login-failure/login-failure.
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { ReceivedNotesComponent } from './components/received-notes/received-notes.component';
 
+import { AccountService} from './account.service';
+
 const routes: Routes = [
   { path: 'create', component: CreateAccountComponent },
   { path: 'login', component: LoginComponent },
@@ -33,7 +35,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatToolbarModule
   ],
-  providers: [],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
