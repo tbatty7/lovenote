@@ -7,7 +7,8 @@ import { HttpClient} from '@angular/common/http';
 export class AccountService {
 
   url = 'http://localhost:4000';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+  
   createAccount(user, passwrd) {
     const newAccount = {
       name: user,
@@ -16,4 +17,7 @@ export class AccountService {
     return this.http.post(`${this.url}/account/create`, newAccount);
   }
 
+  getAccount(id) {
+    return this.http.get(`${this.url}/account/get/${id}`);
+  }
 }
