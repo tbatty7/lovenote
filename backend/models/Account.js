@@ -11,7 +11,7 @@ let Account = new Schema({
     },
     lovedOnes: {
         type: [String],
-        default: null
+        default: []
     }
 });
 
