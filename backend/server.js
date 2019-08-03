@@ -41,6 +41,16 @@ router.route('/account/validate/:name/:password').get((req, res) => {
     })
 });
 
+// endpoint to get user account by id
+router.route('/account/get/:id').get((req, res) => {
+    Account.findById(req.params.id, (err, account) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(account);
+    })
+})
+
 app.use('/', router);
 
 app.listen(4000, () => console.log('Express server is running on port 4000'));
