@@ -33,12 +33,13 @@ router.route('/account/create').post((req, res) => {
 
 // endpoint to validate user account and retrieve it
 router.route('/account/validate/:name/:password').get((req, res) => {
+
     Account.find({name: req.params.name, password: req.params.password},(err, account) => {
         if (err)
             console.log(err);
         else
             res.json(account);
-    })
+    });
 });
 
 // endpoint to get user account by id
@@ -48,8 +49,8 @@ router.route('/account/get/:id').get((req, res) => {
             console.log(err);
         else
             res.json(account);
-    })
-})
+    });
+});
 
 app.use('/', router);
 
