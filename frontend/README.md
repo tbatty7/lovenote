@@ -3,6 +3,7 @@
 ####Commands
 - ng serve -o (This will run the front end server locally)
 - git push heroku master (This will deploy to heroku) 
+- npm run dev (This will start the backend server, even if you are not in the backend directory)
 
 ## Angular Generated Code:
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
