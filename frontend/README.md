@@ -1,5 +1,10 @@
 # Frontend
 
+####Commands
+- ng serve -o (This will run the front end server locally)
+- git push heroku master (This will deploy to heroku) 
+
+## Angular Generated Code:
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
 ## Development server
