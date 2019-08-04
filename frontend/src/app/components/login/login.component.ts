@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService} from '../../account.service';
+import { Router } from '@angular/router';
+import {Account} from '../../account.model';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,13 @@ import { AccountService} from '../../account.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  createAccount() {
+    this.router.navigate([`/create`]);
   }
 
 }
