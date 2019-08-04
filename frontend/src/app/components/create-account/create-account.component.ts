@@ -14,7 +14,7 @@ export class CreateAccountComponent implements OnInit {
   createForm: FormGroup;
 
   constructor(private accountService: AccountService, private formBuilder: FormBuilder, private router: Router) {
-    this.formBuilder.group({
+    this.createForm = this.formBuilder.group({
       name: ['', Validators.required],
       password: ['', Validators.required]
     });
