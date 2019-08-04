@@ -19,4 +19,9 @@ export class LoginComponent implements OnInit {
     this.router.navigate([`/create`]);
   }
 
+  logIn(user, password) {
+    this.accountService.validateAccount(user, password).subscribe((data: Account) => {
+      this.router.navigate([`/received-notes/${data.id}`]);
+    });
+  }
 }
