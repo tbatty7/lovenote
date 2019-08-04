@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService} from '../../account.service';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Router} from '@angular/router';
+import { Account} from '../../account.model';
 
 @Component({
   selector: 'app-create-account',
@@ -8,7 +11,20 @@ import { AccountService} from '../../account.service';
 })
 export class CreateAccountComponent implements OnInit {
 
-  constructor(private accountService: AccountService) { }
+  createForm: FormGroup;
+
+  constructor(private accountService: AccountService, private formBuilder: FormBuilder, private router: Router) {
+    this.formBuilder.group({
+      name: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  createAccount(name, password) {
+    this.accountService.createAccount(name, password).subscribe((data: Account) => {
+      this.router.navigate(['/login']);
+    });
+  }
 
   ngOnInit() {
   }
