@@ -1,8 +1,22 @@
 <div>
   <br>
   <mat-card class="form">
-    <button mat-raised-button color="accent" routerLink="/create">Sign In</button>
+    <section class="mat-typography">
+      <h1>Love-Note</h1>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="loginForm" class="login-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" #name>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Password" formControlName="password" #password>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="accent" type="submit" (click)="logIn(name.value, password.value)" [disabled]="loginForm.pristine">Sign In</button>
     <br><br>
-    <button mat-raised-button color="primary" >Create Account</button>
+    <button mat-raised-button color="primary" routerLink="/create">Create Account</button>
   </mat-card>
 </div>
