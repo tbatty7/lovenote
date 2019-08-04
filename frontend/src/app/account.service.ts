@@ -22,6 +22,6 @@ export class AccountService {
   }
 
   validateAccount(user, password) {
-    return this.http.get(`${this.url}/account/validate/${user}/${password}`)
+    return this.http.get(`${this.url}/account/validate/${user}/${password}`);
   }
 }

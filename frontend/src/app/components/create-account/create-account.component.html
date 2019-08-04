@@ -1,3 +1,22 @@
-<p>
-  create-account works!
-</p>
+<div>
+  <br>
+  <mat-card class="form">
+    <section class="mat-typography">
+      <h1>Create Account</h1>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" #name>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Password" formControlName="password" #password>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="accent" type="submit" (click)="createAccount(name.value, password.value)" [disabled]="createForm.pristine || createForm.invalid">Create Account</button>
+    <br><br>
+    <button mat-raised-button color="primary" routerLink="/login">Back</button>
+  </mat-card>
+</div>
