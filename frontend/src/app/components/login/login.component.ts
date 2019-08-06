@@ -24,10 +24,14 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(user, password) {
-    this.accountService.validateAccount(user, password).subscribe((data: Account) => {
+    this.accountService.validateAccount(user, password).subscribe((data) => {
       console.log('Validating Account...');
       console.log(data);
-      this.router.navigate([`/received-notes/${data.id}`]);
+      if (data[0] == null) {
+        this.router.navigate(['/failure']);
+      } else {
+        this.router.navigate([`/received-notes/${data[0]._id}`]);
+      }
     });
   }
 }
