@@ -23,10 +23,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  createAccount() {
-    this.router.navigate([`/create`]);
-  }
-
   logIn(user, password) {
     this.accountService.validateAccount(user, password).subscribe((data: Account) => {
       console.log('Validating Account...');
