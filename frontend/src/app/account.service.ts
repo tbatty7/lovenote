@@ -28,7 +28,7 @@ export class AccountService {
   addLovedOne(lovedOne, id) {
     const account = {
       lovedOne
-    }
+    };
     this.http.post(`${this.url}/account/add-loved-one/${id}`, account);
   }
 }
