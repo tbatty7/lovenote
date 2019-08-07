@@ -24,4 +24,11 @@ export class AccountService {
   validateAccount(user, password) {
     return this.http.get(`${this.url}/account/validate/${user}/${password}`);
   }
+
+  addLovedOne(lovedOne, id) {
+    const account = {
+      lovedOne
+    }
+    this.http.post(`${this.url}/account/add-loved-one/${id}`, account);
+  }
 }
