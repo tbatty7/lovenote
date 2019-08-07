@@ -21,10 +21,10 @@ export class CreateAccountComponent implements OnInit {
   }
 
   createAccount(name, password) {
-    this.accountService.createAccount(name, password).subscribe((data: Account) => {
-      this.router.navigate(['/login']);
-    });
-  }
+        this.accountService.createAccount(name, password).subscribe(() => {
+          this.router.navigate(['/login']);
+        });
+      }
 
   ngOnInit() {
   }
