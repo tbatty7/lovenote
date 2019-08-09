@@ -53,19 +53,23 @@ router.route('/account/get/:id').get((req, res) => {
 });
 
 // endpoint to add loved ones to an account
-router.route('/account/add-loved-one/:id').get((req, res) => {
-    Account.findById(req,params.id, (err, account) => {
+router.route('/account/add-loved-one').post((req, res) => {
+    Account.findById(req.body.id, (err, account) => {
         if (err)
             console.log(err);
-        else if (!issue)
+        else if (!account)
             return next(new Error('Could not load document'));
         else {
-            account.lovedOnes.put(req.body.lovedOne);
-            account.save().then((account) => {
-                res.json('Loved One Added');
-            }).catch(err => {
-                res.status(400).send('Update Failed');
-            });
+            account.lovedOnes[0] = req.body.lovedOne;
+            account.markModified('lovedOnes'); // This is neccesary for Mongoose to know an array was modified so it saves it.
+            console.log(account);
+            account.save()
+                .then(account => {
+                    res.json('Update done');
+                })
+                .catch(err => {
+                    res.status(400).send('Update failed');
+                });
         }
     });
 });
