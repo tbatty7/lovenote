@@ -62,7 +62,6 @@ router.route('/account/add-loved-one').post((req, res) => {
         else {
             account.lovedOnes.push(req.body.lovedOne);
             account.markModified('lovedOnes'); // This is neccesary for Mongoose to know an array was modified so it saves it.
-            console.log(account);
             account.save()
                 .then(() => {
                     res.json('Update done');
