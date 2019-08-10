@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +26,10 @@ export class AccountService {
   }
 
   addLovedOne(lovedOne, id) {
-    const account = {
+    const accountData = {
       id,
       lovedOne
     };
-    this.http.post(`${this.url}/account/add-loved-one`, account);
+    return this.http.post(`${this.url}/account/add-loved-one`, accountData);
   }
 }
