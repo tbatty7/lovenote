@@ -10,6 +10,7 @@ import {AccountService} from '../../account.service';
 export class LovedOnesComponent implements OnInit {
   id;
   myAccount: any = {};
+  displayedColumns = ['title'];
   constructor(private accountService: AccountService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
