@@ -1,4 +1,21 @@
 <div>
+  <br>
+  <mat-card class="form">
+    <section class="mat-typography">
+      <h1>Add Loved One</h1>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="addlovedonesForm" class="lovedone-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" #name>
+      </mat-form-field>
+      <br>
+    </form>
+    <button mat-raised-button color="accent" type="submit" (click)="addLovedOne(name.value)" [disabled]="addlovedonesForm.pristine || addlovedonesForm.invalid">Add Loved One</button>
+    <span>&nbsp;&nbsp;</span>
+    <button mat-raised-button color="primary" (click)="goToReceivedNotes()">Back</button>
+  </mat-card>
   <table mat-table [dataSource]="myAccount.lovedOnes" class="mat-column-right">
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef class="mat-column-right">Loved Ones</th>
