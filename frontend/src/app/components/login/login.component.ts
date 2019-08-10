@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
   logIn(user, password) {
     this.accountService.validateAccount(user, password).subscribe((data) => {
       console.log('Validating Account...');
-      console.log(data);
       if (data[0] == null) {
         this.router.navigate(['/failure']);
       } else {
