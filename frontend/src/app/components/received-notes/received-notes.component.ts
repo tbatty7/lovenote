@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService} from '../../account.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-received-notes',
@@ -9,13 +9,16 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ReceivedNotesComponent implements OnInit {
   id;
-  constructor(private accountService: AccountService, private route: ActivatedRoute) { }
+  myAccount: any = {};
+  constructor(private accountService: AccountService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.accountService.getAccount(this.id).subscribe((account) => {
         console.log(account);
+        this.myAccount = account;
+        console.log(this.myAccount.name);
       });
     });
   }
