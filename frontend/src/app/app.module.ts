@@ -15,6 +15,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { ReceivedNotesComponent } from './components/received-notes/received-notes.component';
 
 import { AccountService} from './account.service';
+import { LovedOnesComponent } from './components/loved-ones/loved-ones.component';
 
 const routes: Routes = [
   { path: 'create', component: CreateAccountComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
     LoginComponent,
     LoginFailureComponent,
     CreateAccountComponent,
-    ReceivedNotesComponent
+    ReceivedNotesComponent,
+    LovedOnesComponent
   ],
   imports: [
     BrowserModule,
