@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ReceivedNotesComponent implements OnInit {
   id;
-  myAccount: any = {};
+  myName;
   constructor(private accountService: AccountService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -17,8 +17,8 @@ export class ReceivedNotesComponent implements OnInit {
       this.id = params.id;
       this.accountService.getAccount(this.id).subscribe((account) => {
         console.log(account);
-        this.myAccount = account;
-        console.log(this.myAccount.name);
+        this.myName = account.name;
+        console.log(account.name);
       });
     });
   }
