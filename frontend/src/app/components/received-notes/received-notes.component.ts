@@ -16,9 +16,7 @@ export class ReceivedNotesComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.accountService.getAccount(this.id).subscribe((account) => {
-        console.log(account);
         this.myName = account.name;
-        console.log(account.name);
       });
     });
   }
