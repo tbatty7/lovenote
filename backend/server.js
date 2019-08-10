@@ -53,7 +53,13 @@ router.route('/account/get/:id').get((req, res) => {
 });
 
 function addLovedOneTo(lovedOnes, lovedOne) {
-    lovedOnes[0] = lovedOne;
+    let i;
+    let listLength = lovedOnes.length + 1;
+    for (i = 0; i < listLength; i++) {
+        if (lovedOnes[i] === undefined) {
+            lovedOnes[i] = lovedOne;
+        }
+    }
 }
 
 // endpoint to add loved ones to an account
