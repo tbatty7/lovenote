@@ -8,7 +8,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./received-notes.component.css']
 })
 export class ReceivedNotesComponent implements OnInit {
-  id = '5d45cca4bd3d86307cb17d5a';
+  id;
   constructor(private accountService: AccountService, private route: ActivatedRoute) { }
 
   ngOnInit() {
