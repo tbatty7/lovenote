@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'failure', component: LoginFailureComponent },
   { path: 'received-notes/:id', component: ReceivedNotesComponent },
+  { path: 'loved-ones/:id', component: LovedOnesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ]
 
