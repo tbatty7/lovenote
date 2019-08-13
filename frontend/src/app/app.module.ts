@@ -16,6 +16,7 @@ import { ReceivedNotesComponent } from './components/received-notes/received-not
 
 import { AccountService} from './account.service';
 import { LovedOnesComponent } from './components/loved-ones/loved-ones.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'create', component: CreateAccountComponent },
@@ -23,8 +24,9 @@ const routes: Routes = [
   { path: 'failure', component: LoginFailureComponent },
   { path: 'received-notes/:id', component: ReceivedNotesComponent },
   { path: 'loved-ones/:id', component: LovedOnesComponent },
+  { path: 'not-found', component: NotFoundComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
-]
+];
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ const routes: Routes = [
     LoginFailureComponent,
     CreateAccountComponent,
     ReceivedNotesComponent,
-    LovedOnesComponent
+    LovedOnesComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
