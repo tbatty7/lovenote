@@ -70,22 +70,16 @@ router.route('/account/add-loved-one').post((req, res) => {
         else if (!account)
             return next(new Error('Could not load document'));
         else {
-            let lovedOneFound = accountFoundFor(req.body.name);
-            console.log('Account found returned: ' + lovedOneFound);
-            if (lovedOneFound !== undefined) {
-                        console.log('inside loved one found statement');
-                        account.lovedOnes.push(req.body.lovedOne);
-                        account.markModified('lovedOnes'); // This is neccesary for Mongoose to know an array was modified so it saves it.
-                        account.save()
-                            .then(() => {
-                                res.json('Update done');
-                            })
-                            .catch(err => {
-                                res.status(400).send('Update failed');
-                            });
-                    } else {
-                        res.status(400).send('Loved One Not Found');
-                    }
+            console.log('received request to add: ' + req.body.lovedOne);
+            account.lovedOnes.push(req.body.lovedOne);
+            account.markModified('lovedOnes'); // This is neccesary for Mongoose to know an array was modified so it saves it.
+            account.save()
+                .then(() => {
+                    res.json('Update done');
+                })
+                .catch(err => {
+                    res.status(400).send('Update failed');
+                });
         }
     });
 });

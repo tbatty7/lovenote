@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../../account.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -13,6 +13,7 @@ export class LovedOnesComponent implements OnInit {
   myAccount: any = {};
   displayedColumns = ['title'];
   addlovedonesForm: FormGroup;
+
   constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.addlovedonesForm = this.formBuilder.group({
       name: ['', Validators.required]
@@ -34,12 +35,21 @@ export class LovedOnesComponent implements OnInit {
   }
 
   addLovedOne(name) {
-    this.accountService.addLovedOne(name, this.id).subscribe((response) => {
-      console.log(response);
-      if (response === 'Update done') {
-        this.router.navigate([`/received-notes/${this.id}`]);
+    this.accountService.hasAccount(name).subscribe((resp) => {
+      console.log(resp);
+      const lovedOne: any = resp;
+      if (lovedOne.exists === true) {
+        this.accountService.addLovedOne(name, this.id).subscribe((response) => {
+          console.log(response);
+          if (response === 'Update done') {
+            this.router.navigate([`/received-notes/${this.id}`]);
+          } else {
+            console.log(`ERROR ADDING LOVED ONE!! OH NOO!! - ${response}`);
+            this.router.navigate(['/not-found']);
+          }
+        });
       } else {
-        console.log(`ERROR ADDING LOVED ONE!! OH NOO!! - ${response}`);
+        console.log('loved one does not have an account');
       }
     });
   }

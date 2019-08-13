@@ -32,4 +32,8 @@ export class AccountService {
     };
     return this.http.post(`${this.url}/account/add-loved-one`, accountData);
   }
+
+  hasAccount(lovedOne) {
+    return this.http.get(`${this.url}/account/exists/${lovedOne}`);
+  }
 }
