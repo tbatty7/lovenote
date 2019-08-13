@@ -52,6 +52,16 @@ router.route('/account/get/:id').get((req, res) => {
     });
 });
 
+//endpoint to return true or false if account exists
+router.route('/account/exists/:name').get((req, res) => {
+    Account.find({name: req.params.name}, (err, account) => {
+        if (err)
+            console.log(err);
+        else
+            res.json({'exists': (account.length > 0)});
+    });
+});
+
 // endpoint to add loved ones to an account
 router.route('/account/add-loved-one').post((req, res) => {
     Account.findById(req.body.id, (err, account) => {
@@ -60,18 +70,26 @@ router.route('/account/add-loved-one').post((req, res) => {
         else if (!account)
             return next(new Error('Could not load document'));
         else {
-            account.lovedOnes.push(req.body.lovedOne);
-            account.markModified('lovedOnes'); // This is neccesary for Mongoose to know an array was modified so it saves it.
-            account.save()
-                .then(() => {
-                    res.json('Update done');
-                })
-                .catch(err => {
-                    res.status(400).send('Update failed');
-                });
+            let lovedOneFound = accountFoundFor(req.body.name);
+            console.log('Account found returned: ' + lovedOneFound);
+            if (lovedOneFound !== undefined) {
+                        console.log('inside loved one found statement');
+                        account.lovedOnes.push(req.body.lovedOne);
+                        account.markModified('lovedOnes'); // This is neccesary for Mongoose to know an array was modified so it saves it.
+                        account.save()
+                            .then(() => {
+                                res.json('Update done');
+                            })
+                            .catch(err => {
+                                res.status(400).send('Update failed');
+                            });
+                    } else {
+                        res.status(400).send('Loved One Not Found');
+                    }
         }
     });
 });
+
 
 app.use('/', router);
 
