@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 import Account from './models/Account';
+import Note from './models/Note';
 
 const app = express();
 const router = express.Router();
@@ -84,6 +85,17 @@ router.route('/account/add-loved-one').post((req, res) => {
     });
 });
 
+// endpoint to create a new love note
+router.route('/note/create').post((req, res) => {
+    let note = new Note(req.body);
+    note.save()
+        .then(note => {
+            res.status(200).json({'message': 'Note Created!'});
+        })
+        .catch(err => {
+            res.status(400).send('Failed to create note');
+        });
+});
 
 app.use('/', router);
 
