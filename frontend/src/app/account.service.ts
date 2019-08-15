@@ -36,4 +36,14 @@ export class AccountService {
   hasAccount(lovedOne) {
     return this.http.get(`${this.url}/account/exists/${lovedOne}`);
   }
+
+  sendNote(author, recipient, category, message) {
+    const loveNote = {
+      author,
+      recipient,
+      category,
+      message
+    };
+    return this.http.post(`${this.url}/note/create`, loveNote);
+  }
 }

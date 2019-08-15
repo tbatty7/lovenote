@@ -1,3 +1,25 @@
-<p>
-  write-lovenote works!
-</p>
+<div>
+  <br>
+  <mat-card class="form">
+    <section class="mat-typography">
+      <h1>Write Love Note</h1>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="noteForm" class="lovedone-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Loved One" formControlName="recipient" #recipient>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Category" formControlName="category" #category>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <textarea matInput placeholder="Message" formControlName="message" #message></textarea>
+      </mat-form-field>
+      <br>
+    </form>
+    <button mat-raised-button color="accent" type="submit" (click)="sendNote(recipient.value, category.value, message.value)" [disabled]="noteForm.pristine || noteForm.invalid">Send Note</button>
+    <span>&nbsp;&nbsp;</span>
+    <button mat-raised-button color="primary" (click)="goToReceivedNotes()">Back</button>
+  </mat-card>
+</div>
