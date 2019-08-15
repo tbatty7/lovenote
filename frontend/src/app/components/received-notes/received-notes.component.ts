@@ -25,4 +25,8 @@ export class ReceivedNotesComponent implements OnInit {
     this.router.navigate([`/loved-ones/${this.id}`]);
   }
 
+  toWriteLoveNote() {
+    this.router.navigate([`/write-lovenote/${this.id}`]);
+  }
+
 }
