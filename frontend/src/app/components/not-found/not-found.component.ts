@@ -11,7 +11,7 @@ export class NotFoundComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   back() {
-    this.router.navigate([`/received-notes/${this.id}`]);
+    this.router.navigate([`/loved-ones/${this.id}`]);
   }
   ngOnInit() {
     this.route.params.subscribe(params => {
