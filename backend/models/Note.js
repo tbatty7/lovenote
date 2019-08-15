@@ -9,7 +9,7 @@ let Note = new Schema({
    author: {
        type: String
    },
-   receipient: {
+   recipient: {
        type: String
    },
    message: {
