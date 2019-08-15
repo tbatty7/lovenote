@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'failure', component: LoginFailureComponent },
   { path: 'received-notes/:id', component: ReceivedNotesComponent },
   { path: 'loved-ones/:id', component: LovedOnesComponent },
-  { path: 'not-found', component: NotFoundComponent },
+  { path: 'not-found/:id', component: NotFoundComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
