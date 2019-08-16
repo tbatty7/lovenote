@@ -11,7 +11,11 @@
         <input matInput placeholder="Loved One" formControlName="recipient" #recipient>
       </mat-form-field>
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Category" formControlName="category" #category>
+        <mat-select placeholder="Category" [formControlName]="category" #category>
+          <mat-option value="Memory">Memory</mat-option>
+          <mat-option value="Virtue">Virtue</mat-option>
+          <mat-option value="Thought">Thought</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field class="field-full-width">
         <textarea matInput placeholder="Message" formControlName="message" #message></textarea>
