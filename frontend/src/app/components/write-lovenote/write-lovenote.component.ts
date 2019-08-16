@@ -12,6 +12,7 @@ export class WriteLovenoteComponent implements OnInit {
 
   id;
   myAccount: any = {};
+  recipients = [];
   displayedColumns = ['recipient', 'category', 'message'];
   noteForm: FormGroup;
   constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
@@ -27,6 +28,7 @@ export class WriteLovenoteComponent implements OnInit {
       this.id = params.id;
       this.accountService.getAccount(this.id).subscribe((account) => {
         this.myAccount = account;
+        this.recipients = this.myAccount.lovedOnes;
         console.log(this.myAccount.lovedOnes);
       });
     });

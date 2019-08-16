@@ -8,7 +8,9 @@
     <br>
     <form [formGroup]="noteForm" class="lovedone-form">
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Loved One" formControlName="recipient" #recipient>
+        <mat-select placeholder="Loved One" formControlName="recipient" #recipient>
+          <mat-option *ngFor="let recipient of recipients" [value]=recipient >{{recipient}}</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field class="field-full-width">
         <mat-select placeholder="Category" [formControlName]="category" #category>
