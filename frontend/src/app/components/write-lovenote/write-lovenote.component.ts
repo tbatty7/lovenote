@@ -17,8 +17,8 @@ export class WriteLovenoteComponent implements OnInit {
   noteForm: FormGroup;
   constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.noteForm = this.formBuilder.group({
-      recipient: ['', Validators.required],
-      category: ['', Validators.required],
+      recipient: '',
+      category: '',
       message: ['', Validators.required]
     });
   }
