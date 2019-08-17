@@ -15,7 +15,7 @@ import { ReceivedNotesComponent } from './components/received-notes/received-not
 import { LovedOnesComponent } from './components/loved-ones/loved-ones.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { WriteLovenoteComponent } from './components/write-lovenote/write-lovenote.component';
-import { CreateAccountFailureComponent } from './create-account-failure/create-account-failure.component';
+import { CreateAccountFailureComponent } from './components/create-account-failure/create-account-failure.component';
 
 import { AccountService} from './account.service';
 
