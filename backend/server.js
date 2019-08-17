@@ -97,6 +97,15 @@ router.route('/note/create').post((req, res) => {
         });
 });
 
+router.route('/note/received').post((req,res) => {
+    Note.find({recipient: req.body.name}, (err, notes) => {
+        if (err)
+            console.log(err);
+        else
+            res.json({notes: notes});
+    })
+})
+
 app.use('/', router);
 
 app.listen(4000, () => console.log('Express server is running on port 4000'));
