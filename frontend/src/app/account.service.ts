@@ -46,4 +46,9 @@ export class AccountService {
     };
     return this.http.post(`${this.url}/note/create`, loveNote);
   }
+
+  getNotesFor(name) {
+    const request = { name };
+    return this.http.post(`${this.url}/note/received`, request);
+  }
 }

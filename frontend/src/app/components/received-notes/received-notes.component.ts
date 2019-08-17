@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService} from '../../account.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Note} from '../../note.model';
 
 @Component({
   selector: 'app-received-notes',
@@ -10,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ReceivedNotesComponent implements OnInit {
   id;
   myAccount: any = {};
+  notes: Note[];
   constructor(private accountService: AccountService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -17,6 +19,7 @@ export class ReceivedNotesComponent implements OnInit {
       this.id = params.id;
       this.accountService.getAccount(this.id).subscribe((account) => {
         this.myAccount = account;
+        this.getNotes();
       });
     });
   }
@@ -27,6 +30,13 @@ export class ReceivedNotesComponent implements OnInit {
 
   toWriteLoveNote() {
     this.router.navigate([`/write-lovenote/${this.id}`]);
+  }
+
+  getNotes() {
+    this.accountService.getNotesFor(this.myAccount.name).subscribe( (data: Note[]) => {
+      this.notes = data;
+      console.log(this.notes);
+    });
   }
 
 }
