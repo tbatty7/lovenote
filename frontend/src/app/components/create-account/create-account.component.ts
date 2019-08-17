@@ -28,7 +28,7 @@ export class CreateAccountComponent implements OnInit {
           this.router.navigate(['/login']);
         });
       } else {
-        this.router.navigate(['/failure']);
+        this.router.navigate(['/create-account-failure']);
       }
     });
   }
