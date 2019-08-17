@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AccountService} from '../../account.service';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {AccountService} from '../../account.service';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -20,10 +20,18 @@ export class CreateAccountComponent implements OnInit {
   }
 
   createAccount(name, password) {
-        this.accountService.createAccount(name, password).subscribe(() => {
+    this.accountService.hasAccount(name).subscribe(resp => {
+      const account: any = resp;
+      if (account.exists === false) {
+        this.accountService.createAccount(name, password).subscribe(res => {
+          console.log(res);
           this.router.navigate(['/login']);
         });
+      } else {
+        this.router.navigate([`/create-error/`]);
       }
+    });
+  }
 
   ngOnInit() {
   }

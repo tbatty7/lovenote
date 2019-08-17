@@ -36,11 +36,9 @@ export class LovedOnesComponent implements OnInit {
 
   addLovedOne(name) {
     this.accountService.hasAccount(name).subscribe((resp) => {
-      console.log(resp);
       const lovedOne: any = resp;
       if (lovedOne.exists === true) {
         this.accountService.addLovedOne(name, this.id).subscribe((response) => {
-          console.log(response);
           if (response === 'Update done') {
             this.router.navigate([`/received-notes/${this.id}`]);
           } else {
