@@ -29,7 +29,8 @@ export class CreateAccountComponent implements OnInit {
           if (response.message === 'Account Created Successfully!'){
             this.router.navigate(['/login']);
           } else {
-            console.log('did not work');
+            console.log(res);
+            this.router.navigate(['/database-error']);
           }
         });
       } else {

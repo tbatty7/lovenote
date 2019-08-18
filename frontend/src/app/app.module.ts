@@ -16,9 +16,9 @@ import { LovedOnesComponent } from './components/loved-ones/loved-ones.component
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { WriteLovenoteComponent } from './components/write-lovenote/write-lovenote.component';
 import { CreateAccountFailureComponent } from './components/create-account-failure/create-account-failure.component';
+import { DatabaseErrorComponent } from './components/database-error/database-error.component';
 
 import { AccountService} from './account.service';
-import { DatabaseErrorComponent } from './components/database-error/database-error.component';
 
 const routes: Routes = [
   { path: 'create', component: CreateAccountComponent },
@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'not-found/:id', component: NotFoundComponent },
   { path: 'write-lovenote/:id', component: WriteLovenoteComponent },
   { path: 'create-account-failure', component: CreateAccountFailureComponent },
+  { path: 'database-error', component: DatabaseErrorComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
