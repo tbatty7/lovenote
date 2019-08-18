@@ -45,4 +45,7 @@ export class ReceivedNotesComponent implements OnInit {
     console.log('Implement Delete Notes for ' + id);
   }
 
+  toMyNotes() {
+    this.router.navigate([`/authored-notes/${this.id}`]);
+  }
 }
