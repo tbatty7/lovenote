@@ -103,6 +103,15 @@ router.route('/note/received').post((req,res) => {
             console.log(err);
         else
             res.json({notes: notes});
+    });
+});
+
+router.route('/note/authored').post((req, res) => {
+    Note.find({author: req.body.name}, (err, notes) => {
+        if (err)
+            console.log(err);
+        else
+            res.json({notes: notes});
     })
 })
 
