@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService} from '../../account.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Note} from '../../note.model';
+import {NoteService} from '../../note.service';
 
 @Component({
   selector: 'app-received-notes',
@@ -13,7 +14,7 @@ export class ReceivedNotesComponent implements OnInit {
   myAccount: any = {};
   notes: Note[];
   displayedColumns = ['name', 'category', 'message', 'actions'];
-  constructor(private accountService: AccountService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private accountService: AccountService, private noteService: NoteService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -34,7 +35,7 @@ export class ReceivedNotesComponent implements OnInit {
   }
 
   getNotes() {
-    this.accountService.getNotesFor(this.myAccount.name).subscribe( (data: any) => {
+    this.noteService.getNotesFor(this.myAccount.name).subscribe( (data: any) => {
       this.notes = data.notes;
       console.log(this.notes);
     });

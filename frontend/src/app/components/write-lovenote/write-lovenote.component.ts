@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AccountService} from '../../account.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Account} from '../../account.model';
+import {NoteService} from '../../note.service';
 
 @Component({
   selector: 'app-write-lovenote',
@@ -16,7 +17,7 @@ export class WriteLovenoteComponent implements OnInit {
   recipients;
   displayedColumns = ['recipient', 'category', 'message'];
   noteForm: FormGroup;
-  constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private noteService: NoteService) {
     this.noteForm = this.formBuilder.group({
       recipient: '',
       category: '',
@@ -38,7 +39,7 @@ export class WriteLovenoteComponent implements OnInit {
     this.router.navigate([`/received-notes/${this.id}`]);
   }
   sendNote(recipient, category, message) {
-    this.accountService.sendNote(this.myAccount.name, recipient, category, message).subscribe((res) => {
+    this.noteService.sendNote(this.myAccount.name, recipient, category, message).subscribe((res) => {
       console.log(res);
       const response: any = res;
       if (response.message === 'Note Created!') {
