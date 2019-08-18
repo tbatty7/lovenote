@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AccountService} from '../../account.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Account} from '../../account.model';
 
 @Component({
   selector: 'app-write-lovenote',
@@ -11,8 +12,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class WriteLovenoteComponent implements OnInit {
 
   id;
-  myAccount: any = {};
-  recipients = [];
+  myAccount: Account;
+  recipients;
   displayedColumns = ['recipient', 'category', 'message'];
   noteForm: FormGroup;
   constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
@@ -26,7 +27,7 @@ export class WriteLovenoteComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params.id;
-      this.accountService.getAccount(this.id).subscribe((account) => {
+      this.accountService.getAccount(this.id).subscribe((account: any) => {
         this.myAccount = account;
         this.recipients = this.myAccount.lovedOnes;
         console.log(this.myAccount.lovedOnes);
