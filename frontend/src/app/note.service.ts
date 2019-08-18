@@ -24,4 +24,9 @@ export class NoteService {
     const request = { name };
     return this.http.post(`${this.url}/note/received`, request);
   }
+
+  getNotesFrom(name) {
+    const request = { name };
+    return this.http.post( `${this.url}/note/authored`, request);
+  }
 }
