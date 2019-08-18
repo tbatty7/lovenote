@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../../account.service';
 import {Account} from '../../account.model';
+import {Note} from "../../note.model";
 
 @Component({
   selector: 'app-authored-notes',
@@ -12,6 +13,9 @@ export class AuthoredNotesComponent implements OnInit {
 
   id;
   myAccount: any = {};
+  displayedColumns = ['name', 'category', 'message'];
+  notes: Note[];
+
   constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
