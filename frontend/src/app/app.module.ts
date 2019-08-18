@@ -18,6 +18,7 @@ import { WriteLovenoteComponent } from './components/write-lovenote/write-loveno
 import { CreateAccountFailureComponent } from './components/create-account-failure/create-account-failure.component';
 
 import { AccountService} from './account.service';
+import { DatabaseErrorComponent } from './components/database-error/database-error.component';
 
 const routes: Routes = [
   { path: 'create', component: CreateAccountComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
     LovedOnesComponent,
     NotFoundComponent,
     WriteLovenoteComponent,
-    CreateAccountFailureComponent
+    CreateAccountFailureComponent,
+    DatabaseErrorComponent
   ],
   imports: [
     BrowserModule,
