@@ -29,4 +29,8 @@ export class NoteService {
     const request = { name };
     return this.http.post( `${this.url}/note/authored`, request);
   }
+
+  deleteNote(id) {
+    return this.http.get(`${this.url}/note/delete/${id}`);
+  }
 }
