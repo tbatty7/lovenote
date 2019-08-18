@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../../account.service';
-import {Account} from '../../account.model';
-import {Note} from "../../note.model";
+import {Note} from '../../note.model';
+import {NoteService} from '../../note.service';
 
 @Component({
   selector: 'app-authored-notes',
@@ -16,7 +16,7 @@ export class AuthoredNotesComponent implements OnInit {
   displayedColumns = ['name', 'category', 'message'];
   notes: Note[];
 
-  constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router, private noteService: NoteService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -29,7 +29,10 @@ export class AuthoredNotesComponent implements OnInit {
   }
 
   private getMyNotes() {
-    console.log('implement getMyNotes() method');
+    this.noteService.getNotesFrom(this.myAccount.name).subscribe((data: any) => {
+      this.notes = data.notes;
+      console.log(this.notes);
+    });
   }
 
   private toNotes() {
