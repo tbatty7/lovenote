@@ -17,6 +17,10 @@ export class ReceivedNotesComponent implements OnInit {
   constructor(private accountService: AccountService, private noteService: NoteService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.init();
+  }
+
+  private init() {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.accountService.getAccount(this.id).subscribe((account) => {
@@ -42,7 +46,9 @@ export class ReceivedNotesComponent implements OnInit {
   }
 
   deleteNote(id) {
-    console.log('Implement Delete Notes for ' + id);
+    this.noteService.deleteNote(id).subscribe(() => {
+      this.init();
+    });
   }
 
   toMyNotes() {
