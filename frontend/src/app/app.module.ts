@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { WriteLovenoteComponent } from './components/write-lovenote/write-lovenote.component';
 import { CreateAccountFailureComponent } from './components/create-account-failure/create-account-failure.component';
 import { DatabaseErrorComponent } from './components/database-error/database-error.component';
+import { AuthoredNotesComponent } from './components/authored-notes/authored-notes.component';
 
 import { AccountService} from './account.service';
 
@@ -44,7 +45,8 @@ const routes: Routes = [
     NotFoundComponent,
     WriteLovenoteComponent,
     CreateAccountFailureComponent,
-    DatabaseErrorComponent
+    DatabaseErrorComponent,
+    AuthoredNotesComponent
   ],
   imports: [
     BrowserModule,
