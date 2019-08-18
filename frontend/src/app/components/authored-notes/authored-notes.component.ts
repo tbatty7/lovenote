@@ -13,7 +13,7 @@ export class AuthoredNotesComponent implements OnInit {
 
   id;
   myAccount: any = {};
-  displayedColumns = ['name', 'category', 'message'];
+  displayedColumns = ['name', 'category', 'message', 'actions'];
   notes: Note[];
 
   constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router, private noteService: NoteService) { }
@@ -37,5 +37,9 @@ export class AuthoredNotesComponent implements OnInit {
 
   private toNotes() {
     this.router.navigate([`/received-notes/${this.id}`]);
+  }
+
+  deleteNote(id) {
+    console.log('Implement Delete Notes for ' + id);
   }
 }
