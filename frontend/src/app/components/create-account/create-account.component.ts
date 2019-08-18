@@ -25,7 +25,12 @@ export class CreateAccountComponent implements OnInit {
       if (account.exists === false) {
         this.accountService.createAccount(name, password).subscribe(res => {
           console.log(res);
-          this.router.navigate(['/login']);
+          const response: any = res;
+          if (response.message === 'Account Created Successfully!'){
+            this.router.navigate(['/login']);
+          } else {
+            console.log('did not work');
+          }
         });
       } else {
         this.router.navigate(['/create-account-failure']);
