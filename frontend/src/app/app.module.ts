@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'write-lovenote/:id', component: WriteLovenoteComponent },
   { path: 'create-account-failure', component: CreateAccountFailureComponent },
   { path: 'database-error', component: DatabaseErrorComponent },
+  { path: 'authored-notes/:id', component: AuthoredNotesComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
