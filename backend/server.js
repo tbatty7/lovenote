@@ -112,8 +112,17 @@ router.route('/note/authored').post((req, res) => {
             console.log(err);
         else
             res.json({notes: notes});
-    })
-})
+    });
+});
+
+router.route('/note/delete/:id').get((req, res) => {
+    Note.findByIdAndRemove({_id: req.params.id}, (err, issue) => {
+        if (err)
+            res.json(err);
+        else
+            res.json('Removed successfully');
+    });
+});
 
 app.use('/', router);
 
