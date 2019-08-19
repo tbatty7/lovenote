@@ -23,8 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(user, password) {
-    this.accountService.validateAccount(user, password).subscribe((data: any) => {
-      console.log('Validating Account...');
+    this.accountService.validateAccount(user, password).subscribe((data) => {
       if (this.accountNotFound(data)) {
         this.router.navigate(['/failure']);
       } else {
@@ -33,7 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private accountNotFound(data: any) {
-    return data[0] === null;
+  private accountNotFound(data) {
+    return data[0] === undefined;
   }
 }
