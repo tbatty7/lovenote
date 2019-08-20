@@ -11,6 +11,11 @@ const router = express.Router();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/dist/lovenote'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/dist/lovenote/index.html'));
+});
 
 mongoose.connect('mongodb://localhost:27017/lovenote');
 
@@ -126,4 +131,4 @@ router.route('/note/delete/:id').get((req, res) => {
 
 app.use('/', router);
 
-app.listen(4000, () => console.log('Express server is running on port 4000'));
+app.listen(process.env.PORT || 4000, () => console.log('Express server is running on port 4000'));
