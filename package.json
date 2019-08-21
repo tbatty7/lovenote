@@ -1,8 +1,11 @@
 {
-  "name": "frontend",
+  "name": "lovenote",
   "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "ng": "ng",
+    "dev": "babel-watch server.js",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -10,6 +13,9 @@
     "e2e": "ng e2e",
     "postinstall": "ng build --aot --prod=true"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
@@ -29,7 +35,10 @@
     "@angular/cli": "~7.3.9",
     "@angular/compiler-cli": "~7.2.0",
     "zone.js": "~0.8.26",
-    "typescript": "~3.2.2"
+    "typescript": "~3.2.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
@@ -47,7 +56,10 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.11.0"
+    "tslint": "~5.11.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^2.0.8"
   },
   "engines": {
     "node": "10.16.0",
