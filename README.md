@@ -1,13 +1,12 @@
-# Frontend
+# LoveNote
 
 ####Commands
-- ng serve -o (This will run the front end server locally)
+- ng serve -o (This will run the front end server on localhost:4200)
+  - This will update as you make changes in Angular in real time
 - git push heroku master (This will deploy to heroku) 
-
-# Backend
-
-####Commands
-- npm run dev (this will start the backend server, navigate the the backend directory)
+- npm run dev (this will start the backend server)
+  - This will also serve up the Angular front end on static files if you run 'ng build' first.
+  - To access the angular static files, use localhost:4000, same as backend
 
 ## Angular Generated Code:
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
