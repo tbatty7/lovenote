@@ -11,11 +11,11 @@ const router = express.Router();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/dist/lovenote'));
+app.use(express.static(__dirname + 'dist/lovenote'));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/dist/lovenote/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname + 'dist/lovenote/index.html'));
+// });
 
 mongoose.connect('mongodb://localhost:27017/lovenote');
 
