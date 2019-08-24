@@ -148,16 +148,16 @@ const server = app.listen(process.env.PORT || 4000, () => console.log('Express s
 
 
 process.on('SIGTERM', code => {
-  console.log('Shutting down with code: ' + code);
+  console.log('Shutting down with SIGTERM, code: ' + code);
   server.close();
 });
 
 process.on('SIGINT', code => {
-  console.log('Shutting down with code: ' + code);
+  console.log('Shutting down with SIGINT, code: ' + code);
   server.close();
 });
 
 process.on('uncaughtException', code => {
-  console.log('Shutting down with code: ' + code);
+  console.log('Shutting down with uncaught exception of: ' + code);
   server.close();
 });
