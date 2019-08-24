@@ -144,7 +144,7 @@ router.route('/note/delete/:id').get((req, res) => {
 // ]
 // }
 
-const server = app.listen(process.env.PORT || 4000, () => console.log('Express server is running on port 4000'));
+const server = app.listen(process.env.PORT || 5000, () => console.log('Express server is running on port -' + process.env.PORT + '- or port 5000'));
 
 
 process.on('SIGTERM', code => {
