@@ -9,7 +9,7 @@ export class NoteService {
   url = '';
 
   constructor(private http: HttpClient) {
-    // this.url = 'http://localhost:4000/';
+    // this.url = 'http://localhost:5000/';
   }
 
   sendNote(author, recipient, category, message) {

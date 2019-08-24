@@ -19,10 +19,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
 });
 
-const database = 'mongodb://notewriter:evalentine!4love@ds157614.mlab.com:57614/lovenote'
-const localDatabase = 'mongodb://localhost:27017/lovenote';
-
-mongoose.connect(database);
+mongoose.connect(process.env.MY_DATABASE_URL);
 
 const connection = mongoose.connection;
 
@@ -147,4 +144,20 @@ router.route('/note/delete/:id').get((req, res) => {
 // ]
 // }
 
-app.listen(process.env.PORT || 4000, () => console.log('Express server is running on port 4000'));
+const server = app.listen(process.env.PORT || 4000, () => console.log('Express server is running on port 4000'));
+
+
+process.on('SIGTERM', code => {
+  console.log('Shutting down with code: ' + code);
+  server.close();
+});
+
+process.on('SIGINT', code => {
+  console.log('Shutting down with code: ' + code);
+  server.close();
+});
+
+process.on('uncaughtException', code => {
+  console.log('Shutting down with code: ' + code);
+  server.close();
+});

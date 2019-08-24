@@ -7,6 +7,14 @@
 - npm run dev (this will start the backend server)
   - This will also serve up the Angular front end on static files if you run 'ng build' first.
   - To access the angular static files, use localhost:4000, same as backend
+- heroku local (this will also start the backend server - but using heroku)
+  - This uses heroku environment variables
+  - This way I can use a local database when running locally, and the mLab database when
+  running in heroku
+  - I put the local environment variables in a .env file
+  - To prevent the local environment variables from also being using in heroku, 
+  I added the .env file to .gitignore
+  - heroku local automatically runs the server on port 5000
 
 ####Dependencies
 - I used jsonwebtoken v8.5.1 instead of v8.1.0

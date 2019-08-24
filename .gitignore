@@ -1,4 +1,7 @@
 
+# heroku integration
+.env
+
 # compiled output
 /frontend/dist
 /dist
