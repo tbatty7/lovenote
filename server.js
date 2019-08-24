@@ -19,7 +19,10 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
 });
 
-mongoose.connect('mongodb://localhost:27017/lovenote');
+const database = 'mongodb://notewriter:evalentine!4love@ds157614.mlab.com:57614/lovenote'
+const localDatabase = 'mongodb://localhost:27017/lovenote';
+
+mongoose.connect(database);
 
 const connection = mongoose.connection;
 
@@ -131,6 +134,17 @@ router.route('/note/delete/:id').get((req, res) => {
     });
 });
 
-
+// Mongo mLab
+// {
+//   "_id": "lovenote.notewriter",
+//   "user": "notewriter",
+//   "db": "lovenote",
+//   "roles": [
+//   {
+//     "role": "dbOwner",
+//     "db": "lovenote"
+//   }
+// ]
+// }
 
 app.listen(process.env.PORT || 4000, () => console.log('Express server is running on port 4000'));

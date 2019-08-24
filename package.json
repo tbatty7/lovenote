@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ng": "ng",
     "dev": "babel-watch server.js",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
