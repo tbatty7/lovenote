@@ -20,8 +20,8 @@ router.route('/account/create').post((req, res) => {
 
 // endpoint to validate user account and retrieve it
 router.route('/account/validate/:name/:password').get((req, res) => {
-
-  Account.find({name: req.params.name, password: req.params.password},(err, account) => {
+  let query = {name: req.params.name, password: req.params.password};
+  Account.find(query,(err, account) => {
     if (err)
       console.log(err);
     else
@@ -41,7 +41,8 @@ router.route('/account/get/:id').get((req, res) => {
 
 //endpoint to return true or false if account exists
 router.route('/account/exists/:name').get((req, res) => {
-  Account.find({name: req.params.name}, (err, account) => {
+  let query = {name: req.params.name};
+  Account.find(query, (err, account) => {
     if (err)
       console.log(err);
     else

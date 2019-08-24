@@ -19,7 +19,8 @@ router.route('/note/create').post((req, res) => {
 });
 
 router.route('/note/received').post((req,res) => {
-  Note.find({recipient: req.body.name}, (err, notes) => {
+  let query = {recipient: req.body.name};
+  Note.find(query, (err, notes) => {
     if (err)
       console.log(err);
     else
@@ -28,7 +29,8 @@ router.route('/note/received').post((req,res) => {
 });
 
 router.route('/note/authored').post((req, res) => {
-  Note.find({author: req.body.name}, (err, notes) => {
+  let query = {author: req.body.name};
+  Note.find(query, (err, notes) => {
     if (err)
       console.log(err);
     else
@@ -37,7 +39,8 @@ router.route('/note/authored').post((req, res) => {
 });
 
 router.route('/note/delete/:id').get((req, res) => {
-  Note.findByIdAndRemove({_id: req.params.id}, (err, issue) => {
+  let query = {_id: req.params.id};
+  Note.findByIdAndRemove(query, (err, issue) => {
     if (err)
       res.json(err);
     else
