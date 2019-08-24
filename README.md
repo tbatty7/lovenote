@@ -8,6 +8,10 @@
   - This will also serve up the Angular front end on static files if you run 'ng build' first.
   - To access the angular static files, use localhost:4000, same as backend
 
+####Dependencies
+- I used jsonwebtoken v8.5.1 instead of v8.1.0
+- I used passport-jwt v4.0.0 instead of v3.0.1
+ 
 ## Angular Generated Code:
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
