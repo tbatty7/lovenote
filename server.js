@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import path from 'path';
 
-import Account from './models/Account';
 import Note from './models/Note';
 import accountRoutes from './account-routes';
 
@@ -30,59 +29,6 @@ connection.once('open', () => {
 });
 
 
-
-// endpoint to validate user account and retrieve it
-router.route('/account/validate/:name/:password').get((req, res) => {
-
-    Account.find({name: req.params.name, password: req.params.password},(err, account) => {
-        if (err)
-            console.log(err);
-        else
-            res.json(account);
-    });
-});
-
-// endpoint to get user account by id
-router.route('/account/get/:id').get((req, res) => {
-    Account.findById(req.params.id, (err, account) => {
-        if (err)
-            console.log(err);
-        else
-            res.json(account);
-    });
-});
-
-//endpoint to return true or false if account exists
-router.route('/account/exists/:name').get((req, res) => {
-    Account.find({name: req.params.name}, (err, account) => {
-        if (err)
-            console.log(err);
-        else
-            res.json({'exists': (account.length > 0)});
-    });
-});
-
-// endpoint to add loved ones to an account
-router.route('/account/add-loved-one').post((req, res) => {
-    Account.findById(req.body.id, (err, account) => {
-        if (err)
-            console.log(err);
-        else if (!account)
-            return next(new Error('Could not load document'));
-        else {
-            console.log('received request to add: ' + req.body.lovedOne);
-            account.lovedOnes.push(req.body.lovedOne);
-            account.markModified('lovedOnes'); // This is neccesary for Mongoose to know an array was modified so it saves it.
-            account.save()
-                .then(() => {
-                    res.json('Update done');
-                })
-                .catch(err => {
-                    res.status(400).send('Update failed');
-                });
-        }
-    });
-});
 
 // endpoint to create a new love note
 router.route('/note/create').post((req, res) => {
