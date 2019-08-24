@@ -3,9 +3,7 @@ import passport from 'passport';
 import jwt from 'jsonwebtoken';
 
 import Account from './models/Account';
-import Note from './models/Note';
 
-const app = express();
 const router = express.Router();
 
 // endpoint to create new user account
