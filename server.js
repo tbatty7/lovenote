@@ -8,14 +8,12 @@ import accountRoutes from './account-routes';
 import noteRoutes from './note-routes';
 
 const app = express();
-const router = express.Router();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/dist/frontend'));
+app.use(express.static(__dirname + '/dist/frontend')); // This must be in front of routes
 app.use('/', accountRoutes);
 app.use('/', noteRoutes);
-app.use('/', router);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
