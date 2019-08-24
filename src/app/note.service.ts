@@ -6,9 +6,11 @@ import {HttpClient} from '@angular/common/http';
 })
 export class NoteService {
 
-  url = 'http://localhost:4000';
+  url = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    // this.url = 'http://localhost:4000/';
+  }
 
   sendNote(author, recipient, category, message) {
     const loveNote = {
@@ -17,20 +19,20 @@ export class NoteService {
       category,
       message
     };
-    return this.http.post(`${this.url}/note/create`, loveNote);
+    return this.http.post(`${this.url}note/create`, loveNote);
   }
 
   getNotesFor(name) {
     const request = { name };
-    return this.http.post(`${this.url}/note/received`, request);
+    return this.http.post(`${this.url}note/received`, request);
   }
 
   getNotesFrom(name) {
     const request = { name };
-    return this.http.post( `${this.url}/note/authored`, request);
+    return this.http.post( `${this.url}note/authored`, request);
   }
 
   deleteNote(id) {
-    return this.http.get(`${this.url}/note/delete/${id}`);
+    return this.http.get(`${this.url}note/delete/${id}`);
   }
 }

@@ -6,23 +6,25 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AccountService {
 
-  url = 'http://localhost:4000';
-  constructor(private http: HttpClient) {}
+  url = '';
+  constructor(private http: HttpClient) {
+    // this.url = 'http://localhost:4000/';
+  }
 
   createAccount(user, passwrd) {
     const newAccount = {
       name: user,
       password: passwrd
     };
-    return this.http.post(`${this.url}/account/create`, newAccount);
+    return this.http.post(`${this.url}account/create`, newAccount);
   }
 
   getAccount(id) {
-    return this.http.get(`${this.url}/account/get/${id}`);
+    return this.http.get(`${this.url}account/get/${id}`);
   }
 
   validateAccount(user, password) {
-    return this.http.get(`${this.url}/account/validate/${user}/${password}`);
+    return this.http.get(`${this.url}account/validate/${user}/${password}`);
   }
 
   addLovedOne(lovedOne, id) {
@@ -30,11 +32,11 @@ export class AccountService {
       id,
       lovedOne
     };
-    return this.http.post(`${this.url}/account/add-loved-one`, accountData);
+    return this.http.post(`${this.url}account/add-loved-one`, accountData);
   }
 
   hasAccount(lovedOne) {
-    return this.http.get(`${this.url}/account/exists/${lovedOne}`);
+    return this.http.get(`${this.url}account/exists/${lovedOne}`);
   }
 
 }
