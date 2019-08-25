@@ -2,7 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import passport from 'passport';
 import path from 'path';
+import jwtStrategy from './config/passport';
 
 import accountRoutes from './account-routes';
 import noteRoutes from './note-routes';
@@ -10,8 +12,9 @@ import noteRoutes from './note-routes';
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
 app.use(express.static(__dirname + '/dist/frontend')); // This must be in front of routes
+app.use(bodyParser.json());
+
 app.use('/', accountRoutes);
 app.use('/', noteRoutes);
 
