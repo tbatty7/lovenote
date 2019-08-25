@@ -14,7 +14,9 @@ const app = express();
 app.use(cors());
 app.use(express.static(__dirname + '/dist/frontend')); // This must be in front of routes
 app.use(bodyParser.json());
-
+app.use(passport.initialize());
+app.use(passport.session());
+jwtStrategy(passport);
 app.use('/', accountRoutes);
 app.use('/', noteRoutes);
 

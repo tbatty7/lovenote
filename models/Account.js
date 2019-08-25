@@ -18,13 +18,20 @@ let AccountSchema = new Schema({
 
 const Account = module.exports = mongoose.model('Account', AccountSchema);
 
-module.exports.registerAccount = (newAccount, callback) => {
+module.exports.registerAccount = function(newAccount, callback) {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(newAccount.password, salt, (err, hash)=> {
       // Store hash in your password DB.
       if (err) throw err;
       newAccount.password = hash;
       newAccount.save(callback);
-    })
+    });
+  });
+};
+
+module.exports.comparePassword = function(enteredPassword, hashedPassword, callback) {
+  bcrypt.compare(enteredPassword, hashedPassword, (err, isMatch) => {
+    if (err) throw err;
+    callback(null, isMatch);
   });
 };
