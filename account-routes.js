@@ -35,12 +35,8 @@ router.route('/account/authenticate').post((req, res, next) => {
   const password = req.body.password;
 
   Account.findOne({name: username}, (err, account) => {
-    if (err) {
-      console.log('error: ' + err);
-      throw err;
-    }
+    if (err) throw err;
     if (!account) {
-      console.log('Name not found for ' + username);
       return res.json({'success': false, 'msg': 'User not found'});
     }
 
@@ -69,7 +65,7 @@ router.route('/account/authenticate').post((req, res, next) => {
 });
 
 // endpoint to get user account by id
-router.route('/account/get/:id').get((req, res) => {
+router.get('/account/get/:id', passport.authenticate('jwt', {'session':false}),(req, res) => {
   Account.findById(req.params.id, (err, account) => {
     if (err)
       console.log(err);
