@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 export class AccountService {
 
   authToken: any;
+  account: any;
   url: string = environment.APIEndpoint;
 
   constructor(private http: HttpClient) {}
@@ -44,4 +45,12 @@ export class AccountService {
     return this.http.get(`${this.url}account/exists/${lovedOne}`);
   }
 
+  storeUserData(token: string, account: any) {
+    // id_token is magic word used by angular-jwt to validate token
+    localStorage.setItem('id_token', token);
+    // account object must be turned into a string for local storage
+    localStorage.setItem('account', JSON.stringify(account));
+    this.authToken = token;
+    this.account = account;
+  }
 }

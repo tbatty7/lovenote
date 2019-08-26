@@ -32,18 +32,25 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  private accountNotFound(data) {
+    return data[0] === undefined;
+  }
+
   authenticate(name, password) {
     const account = {
       name,
       password
     }
     this.accountService.authenticateAccount(account)
-      .subscribe(data => {
-        console.log(data);
+      .subscribe(res => {
+        const data: any = res;
+        console.log(data.account);
+        if (data.success) {
+          this.accountService.storeUserData(data.token, data.account);
+        } else {
+          console.log(data.msg);
+          this.router.navigate(['/failure']);
+        }
       });
-  }
-
-  private accountNotFound(data) {
-    return data[0] === undefined;
   }
 }
