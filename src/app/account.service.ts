@@ -53,4 +53,10 @@ export class AccountService {
     this.authToken = token;
     this.account = account;
   }
+
+  logout() {
+    this.authToken = null;
+    this.account = null;
+    localStorage.clear();
+  }
 }

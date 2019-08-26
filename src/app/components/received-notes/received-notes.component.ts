@@ -14,7 +14,11 @@ export class ReceivedNotesComponent implements OnInit {
   myAccount: any = {};
   notes: Note[];
   displayedColumns = ['name', 'category', 'message', 'actions'];
-  constructor(private accountService: AccountService, private noteService: NoteService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private accountService: AccountService,
+    private noteService: NoteService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.init();
@@ -49,6 +53,11 @@ export class ReceivedNotesComponent implements OnInit {
     this.noteService.deleteNote(id).subscribe(() => {
       this.init();
     });
+  }
+
+  logout() {
+    this.accountService.logout();
+    this.router.navigate(['/login']);
   }
 
   toMyNotes() {
