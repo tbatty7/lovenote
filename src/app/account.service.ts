@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -7,7 +7,8 @@ import { environment } from '../environments/environment';
 })
 export class AccountService {
 
-  url = environment.APIEndpoint;
+  authToken: any;
+  url: string = environment.APIEndpoint;
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +18,10 @@ export class AccountService {
       password: passwrd
     };
     return this.http.post(`${this.url}account/create`, newAccount);
+  }
+
+  authenticateAccount(account) {
+    return this.http.post(`${this.url}account/authenticate`, account);
   }
 
   getAccount(id) {

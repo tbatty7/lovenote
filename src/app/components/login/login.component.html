@@ -17,6 +17,8 @@
     </form>
     <button mat-raised-button color="accent" type="submit" (click)="logIn(name.value, password.value)" [disabled]="loginForm.pristine || loginForm.invalid">Sign In</button>
     <br><br>
+    <button mat-raised-button color="accent" type="submit" (click)="authenticate(name.value, password.value)" [disabled]="loginForm.pristine || loginForm.invalid">Authenticate</button>
+    <br><br>
     <button mat-raised-button color="primary" routerLink="/create">Create Account</button>
   </mat-card>
 </div>

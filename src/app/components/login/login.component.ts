@@ -32,6 +32,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  authenticate(name, password) {
+    const account = {
+      name,
+      password
+    }
+    this.accountService.authenticateAccount(account)
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
+
   private accountNotFound(data) {
     return data[0] === undefined;
   }
