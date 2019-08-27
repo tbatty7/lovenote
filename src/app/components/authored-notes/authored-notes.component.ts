@@ -43,6 +43,11 @@ export class AuthoredNotesComponent implements OnInit {
     this.router.navigate([`/received-notes/${this.id}`]);
   }
 
+  logout() {
+    this.accountService.logout();
+    this.router.navigate(['/login']);
+  }
+
   deleteNote(id) {
     this.noteService.deleteNote(id).subscribe(resp => {
       this.init();
