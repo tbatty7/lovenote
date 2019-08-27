@@ -40,11 +40,13 @@ export class AccountService {
       id,
       lovedOne
     };
-    return this.http.post(`${this.url}account/add-loved-one`, accountData);
+    const headers = new HttpHeaders({Authorization: this.authToken});
+    return this.http.post(`${this.url}account/add-loved-one`, accountData, {headers});
   }
 
   hasAccount(lovedOne) {
-    return this.http.get(`${this.url}account/exists/${lovedOne}`);
+    const headers = new HttpHeaders({Authorization: this.authToken});
+    return this.http.get(`${this.url}account/exists/${lovedOne}`, {headers});
   }
 
   storeUserData(token: string, account: any) {

@@ -77,7 +77,9 @@ router.get('/account/get/:id',
 });
 
 //endpoint to return true or false if account exists
-router.route('/account/exists/:name').get((req, res) => {
+router.get('/account/exists/:name',
+  passport.authenticate('jwt', {'session':false}),
+  (req, res) => {
   let query = {name: req.params.name};
   Account.find(query, (err, account) => {
     if (err)
@@ -88,7 +90,9 @@ router.route('/account/exists/:name').get((req, res) => {
 });
 
 // endpoint to add loved ones to an account
-router.route('/account/add-loved-one').post((req, res) => {
+router.post('/account/add-loved-one',
+  passport.authenticate('jwt', {'session':false}),
+  (req, res) => {
   Account.findById(req.body.id, (err, account) => {
     if (err)
       console.log(err);
