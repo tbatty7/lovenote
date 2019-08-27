@@ -30,8 +30,7 @@ export class AccountService {
   }
 
   loggedIn() {
-    this.authToken = localStorage.getItem('id_token');
-    return !this.jwtHelper.isTokenExpired(this.authToken);
+    return this.authToken !== null || this.authToken !== undefined || !this.jwtHelper.isTokenExpired(this.authToken);
   }
 
   getAccount(id) {
