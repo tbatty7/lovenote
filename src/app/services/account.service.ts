@@ -30,7 +30,10 @@ export class AccountService {
   }
 
   loggedIn() {
-    return this.authToken !== null || this.authToken !== undefined || !this.jwtHelper.isTokenExpired(this.authToken);
+    const token = this.getToken();
+    const tokenNotNull = token !== null;
+    const tokenNotExpired = !this.jwtHelper.isTokenExpired(token);
+    return tokenNotNull || tokenNotExpired;
   }
 
   getAccount(id) {
@@ -69,5 +72,9 @@ export class AccountService {
 
   loadToken() {
     this.authToken = localStorage.getItem('id_token');
+  }
+
+  getToken() {
+    return localStorage.getItem('id_token');
   }
 }

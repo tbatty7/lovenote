@@ -18,7 +18,7 @@ import { WriteLovenoteComponent } from './components/write-lovenote/write-loveno
 import { CreateAccountFailureComponent } from './components/create-account-failure/create-account-failure.component';
 import { DatabaseErrorComponent } from './components/database-error/database-error.component';
 import { AuthoredNotesComponent } from './components/authored-notes/authored-notes.component';
-
+import { AuthGuard} from './services/auth.guard';
 import { AccountService} from './services/account.service';
 
 const routes: Routes = [
@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'failure', component: LoginFailureComponent },
   { path: 'received-notes/:id', component: ReceivedNotesComponent },
-  { path: 'loved-ones/:id', component: LovedOnesComponent },
+  { path: 'loved-ones/:id', component: LovedOnesComponent, canActivate:
+      [AuthGuard] },
   { path: 'not-found/:id', component: NotFoundComponent },
   { path: 'write-lovenote/:id', component: WriteLovenoteComponent },
   { path: 'create-account-failure', component: CreateAccountFailureComponent },
@@ -67,7 +68,7 @@ const routes: Routes = [
     MatDividerModule,
     MatSnackBarModule
   ],
-  providers: [AccountService],
+  providers: [AccountService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
