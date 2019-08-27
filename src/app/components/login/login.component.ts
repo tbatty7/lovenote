@@ -22,25 +22,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  logIn(user, password) {
-    this.accountService.validateAccount(user, password).subscribe((data) => {
-      if (this.accountNotFound(data)) {
-        this.router.navigate(['/failure']);
-      } else {
-        this.router.navigate([`/received-notes/${data[0]._id}`]);
-      }
-    });
-  }
-
-  private accountNotFound(data) {
-    return data[0] === undefined;
-  }
-
   authenticate(name, password) {
     const account = {
       name,
       password
-    }
+    };
     this.accountService.authenticateAccount(account)
       .subscribe(res => {
         const data: any = res;
