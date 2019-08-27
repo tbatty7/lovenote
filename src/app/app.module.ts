@@ -25,14 +25,17 @@ const routes: Routes = [
   { path: 'create', component: CreateAccountComponent },
   { path: 'login', component: LoginComponent },
   { path: 'failure', component: LoginFailureComponent },
-  { path: 'received-notes/:id', component: ReceivedNotesComponent },
+  { path: 'received-notes/:id', component: ReceivedNotesComponent, canActivate:
+      [AuthGuard] },
   { path: 'loved-ones/:id', component: LovedOnesComponent, canActivate:
       [AuthGuard] },
   { path: 'not-found/:id', component: NotFoundComponent },
-  { path: 'write-lovenote/:id', component: WriteLovenoteComponent },
+  { path: 'write-lovenote/:id', component: WriteLovenoteComponent, canActivate:
+      [AuthGuard] },
   { path: 'create-account-failure', component: CreateAccountFailureComponent },
   { path: 'database-error', component: DatabaseErrorComponent },
-  { path: 'authored-notes/:id', component: AuthoredNotesComponent },
+  { path: 'authored-notes/:id', component: AuthoredNotesComponent, canActivate:
+      [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
