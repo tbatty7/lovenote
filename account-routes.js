@@ -65,7 +65,9 @@ router.route('/account/authenticate').post((req, res, next) => {
 });
 
 // endpoint to get user account by id
-router.get('/account/get/:id', passport.authenticate('jwt', {'session':false}),(req, res) => {
+router.get('/account/get/:id',
+  passport.authenticate('jwt', {'session':false}),
+  (req, res) => {
   Account.findById(req.params.id, (err, account) => {
     if (err)
       console.log(err);

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,9 @@ export class AccountService {
   }
 
   getAccount(id) {
-    return this.http.get(`${this.url}account/get/${id}`);
+    this.loadToken();
+    const headers = new HttpHeaders({Authorization: this.authToken});
+    return this.http.get(`${this.url}account/get/${id}`, {headers});
   }
 
   validateAccount(user, password) {
@@ -58,5 +60,9 @@ export class AccountService {
     this.authToken = null;
     this.account = null;
     localStorage.clear();
+  }
+
+  loadToken() {
+    this.authToken = localStorage.getItem('id_token');
   }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AccountService} from '../../account.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {AccountService} from '../../account.service';
+import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
     this.accountService.authenticateAccount(account)
       .subscribe(res => {
         const data: any = res;
-        console.log(data.account);
         if (data.success) {
           this.accountService.storeUserData(data.token, data.account);
+          this.router.navigate([`/received-notes/${data.account.id}`]);
         } else {
-          console.log(data.msg);
+          console.log('Error message when authenticating: ' + data.msg);
           this.router.navigate(['/failure']);
         }
       });
