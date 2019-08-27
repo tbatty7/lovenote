@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AccountService} from '../../account.service';
+import {AccountService} from '../../services/account.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Account} from '../../account.model';
 import {NoteService} from '../../note.service';

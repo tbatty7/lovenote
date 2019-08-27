@@ -19,7 +19,7 @@ import { CreateAccountFailureComponent } from './components/create-account-failu
 import { DatabaseErrorComponent } from './components/database-error/database-error.component';
 import { AuthoredNotesComponent } from './components/authored-notes/authored-notes.component';
 
-import { AccountService} from './account.service';
+import { AccountService} from './services/account.service';
 
 const routes: Routes = [
   { path: 'create', component: CreateAccountComponent },
