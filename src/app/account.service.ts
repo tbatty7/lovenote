@@ -1,17 +1,21 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
+  jwtHelper: JwtHelperService;
   authToken: any;
   account: any;
   url: string = environment.APIEndpoint;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.jwtHelper = new JwtHelperService();
+  }
 
   createAccount(user, passwrd) {
     const newAccount = {
@@ -23,6 +27,11 @@ export class AccountService {
 
   authenticateAccount(account) {
     return this.http.post(`${this.url}account/authenticate`, account);
+  }
+
+  loggedIn() {
+    this.authToken = localStorage.getItem('id_token');
+    return !this.jwtHelper.isTokenExpired(this.authToken);
   }
 
   getAccount(id) {
