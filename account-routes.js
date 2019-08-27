@@ -18,17 +18,6 @@ router.route('/account/create').post((req, res) => {
   });
 });
 
-// endpoint to validate user account and retrieve it
-router.route('/account/validate/:name/:password').get((req, res) => {
-  let query = {name: req.params.name, password: req.params.password};
-  Account.find(query, (err, account) => {
-    if (err)
-      console.log(err);
-    else
-      res.json(account);
-  });
-});
-
 // endpoint to authenticate with jwt token
 router.route('/account/authenticate').post((req, res, next) => {
   const username = req.body.name;
@@ -78,7 +67,6 @@ router.get('/account/get/:id',
 
 //endpoint to return true or false if account exists
 router.get('/account/exists/:name',
-  passport.authenticate('jwt', {'session':false}),
   (req, res) => {
   let query = {name: req.params.name};
   Account.find(query, (err, account) => {

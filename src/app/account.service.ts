@@ -31,10 +31,6 @@ export class AccountService {
     return this.http.get(`${this.url}account/get/${id}`, {headers});
   }
 
-  validateAccount(user, password) {
-    return this.http.get(`${this.url}account/validate/${user}/${password}`);
-  }
-
   addLovedOne(lovedOne, id) {
     const accountData = {
       id,
@@ -45,8 +41,7 @@ export class AccountService {
   }
 
   hasAccount(lovedOne) {
-    const headers = new HttpHeaders({Authorization: this.authToken});
-    return this.http.get(`${this.url}account/exists/${lovedOne}`, {headers});
+    return this.http.get(`${this.url}account/exists/${lovedOne}`);
   }
 
   storeUserData(token: string, account: any) {
