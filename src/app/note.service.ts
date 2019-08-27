@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
 
 @Injectable({
@@ -18,20 +18,24 @@ export class NoteService {
       category,
       message
     };
-    return this.http.post(`${this.url}note/create`, loveNote);
+    const headers = new HttpHeaders({Authorization: localStorage.getItem('id_token')});
+    return this.http.post(`${this.url}note/create`, loveNote, {headers});
   }
 
   getNotesFor(name) {
     const request = { name };
-    return this.http.post(`${this.url}note/received`, request);
+    const headers = new HttpHeaders({Authorization: localStorage.getItem('id_token')});
+    return this.http.post(`${this.url}note/received`, request, {headers});
   }
 
   getNotesFrom(name) {
     const request = { name };
-    return this.http.post( `${this.url}note/authored`, request);
+    const headers = new HttpHeaders({Authorization: localStorage.getItem('id_token')});
+    return this.http.post( `${this.url}note/authored`, request, {headers});
   }
 
   deleteNote(id) {
-    return this.http.get(`${this.url}note/delete/${id}`);
+    const headers = new HttpHeaders({Authorization: localStorage.getItem('id_token')});
+    return this.http.get(`${this.url}note/delete/${id}`, {headers});
   }
 }

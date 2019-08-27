@@ -7,7 +7,9 @@ import Note from './models/Note';
 const router = express.Router();
 
 // endpoint to create a new love note
-router.route('/note/create').post((req, res) => {
+router.post('/note/create',
+  passport.authenticate('jwt', {'session':false}),
+  (req, res) => {
   let note = new Note(req.body);
   note.save()
     .then(note => {
@@ -18,7 +20,9 @@ router.route('/note/create').post((req, res) => {
     });
 });
 
-router.route('/note/received').post((req,res) => {
+router.post('/note/received',
+  passport.authenticate('jwt', {'session':false}),
+  (req,res) => {
   let query = {recipient: req.body.name};
   Note.find(query, (err, notes) => {
     if (err)
@@ -28,7 +32,9 @@ router.route('/note/received').post((req,res) => {
   });
 });
 
-router.route('/note/authored').post((req, res) => {
+router.post('/note/authored',
+  passport.authenticate('jwt', {'session':false}),
+  (req, res) => {
   let query = {author: req.body.name};
   Note.find(query, (err, notes) => {
     if (err)
@@ -38,7 +44,9 @@ router.route('/note/authored').post((req, res) => {
   });
 });
 
-router.route('/note/delete/:id').get((req, res) => {
+router.get('/note/delete/:id',
+  passport.authenticate('jwt', {'session':false}),
+  (req, res) => {
   let query = {_id: req.params.id};
   Note.findByIdAndRemove(query, (err, issue) => {
     if (err)
