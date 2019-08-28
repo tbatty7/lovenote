@@ -16,7 +16,10 @@ export class AuthoredNotesComponent implements OnInit {
   displayedColumns = ['name', 'category', 'message', 'actions'];
   notes: Note[];
 
-  constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router, private noteService: NoteService) { }
+  constructor( private route: ActivatedRoute,
+               private accountService: AccountService,
+               private router: Router,
+               private noteService: NoteService ) { }
 
   ngOnInit() {
     this.init();
