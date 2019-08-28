@@ -14,7 +14,10 @@ export class LovedOnesComponent implements OnInit {
   displayedColumns = ['title'];
   addlovedonesForm: FormGroup;
 
-  constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor( private accountService: AccountService,
+               private formBuilder: FormBuilder,
+               private route: ActivatedRoute,
+               private router: Router) {
     this.addlovedonesForm = this.formBuilder.group({
       name: ['', Validators.required]
     });
@@ -25,12 +28,11 @@ export class LovedOnesComponent implements OnInit {
   }
 
   private initialize() {
-    this.route.params.subscribe(params => {
-      this.id = params.id;
-      this.accountService.getAccount(this.id).subscribe((account) => {
-        this.myAccount = account;
-        console.log(this.myAccount.lovedOnes);
-      });
+    const accountString = localStorage.getItem('account');
+    this.id = JSON.parse(accountString).id;
+    this.accountService.getAccount(this.id).subscribe((account) => {
+      this.myAccount = account;
+      console.log(this.myAccount.lovedOnes);
     });
   }
 
