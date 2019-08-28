@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-not-found',
@@ -7,16 +7,14 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./not-found.component.css']
 })
 export class NotFoundComponent implements OnInit {
-  id;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router) {
+  }
 
   back() {
-    this.router.navigate([`/loved-ones/${this.id}`]);
+    this.router.navigate([`/loved-ones`]);
   }
+
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params.id;
-    });
   }
 
 }

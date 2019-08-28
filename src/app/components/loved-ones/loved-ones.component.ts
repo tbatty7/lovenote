@@ -50,7 +50,7 @@ export class LovedOnesComponent implements OnInit {
         });
       } else {
         console.log('loved one does not have an account');
-        this.router.navigate([`/not-found/${this.id}`]);
+        this.router.navigate([`/not-found`]);
       }
     });
   }

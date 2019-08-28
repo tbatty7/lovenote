@@ -27,9 +27,9 @@ const routes: Routes = [
   { path: 'failure', component: LoginFailureComponent },
   { path: 'received-notes', component: ReceivedNotesComponent, canActivate:
       [AuthGuard] },
-  { path: 'loved-ones/:id', component: LovedOnesComponent, canActivate:
+  { path: 'loved-ones', component: LovedOnesComponent, canActivate:
       [AuthGuard] },
-  { path: 'not-found/:id', component: NotFoundComponent },
+  { path: 'not-found', component: NotFoundComponent },
   { path: 'write-lovenote/:id', component: WriteLovenoteComponent, canActivate:
       [AuthGuard] },
   { path: 'create-account-failure', component: CreateAccountFailureComponent },
