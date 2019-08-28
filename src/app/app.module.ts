@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'loved-ones', component: LovedOnesComponent, canActivate:
       [AuthGuard] },
   { path: 'not-found', component: NotFoundComponent },
-  { path: 'write-lovenote/:id', component: WriteLovenoteComponent, canActivate:
+  { path: 'write-lovenote', component: WriteLovenoteComponent, canActivate:
       [AuthGuard] },
   { path: 'create-account-failure', component: CreateAccountFailureComponent },
   { path: 'database-error', component: DatabaseErrorComponent },
