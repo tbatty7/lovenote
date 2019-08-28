@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class CreateAccountComponent implements OnInit {
 
   createForm: FormGroup;
+  hide = true;
 
   constructor(private accountService: AccountService, private formBuilder: FormBuilder, private router: Router) {
     this.createForm = this.formBuilder.group({

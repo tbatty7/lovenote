@@ -12,7 +12,10 @@
       </mat-form-field>
       <br>
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Password" formControlName="password" #password>
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" #password>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
     </form>
     <button mat-raised-button color="accent" type="submit" (click)="createAccount(name.value, password.value)" [disabled]="createForm.pristine || createForm.invalid">Create Account</button>
