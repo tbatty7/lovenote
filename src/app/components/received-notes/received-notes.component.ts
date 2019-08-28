@@ -59,6 +59,6 @@ export class ReceivedNotesComponent implements OnInit {
   }
 
   toMyNotes() {
-    this.router.navigate([`/authored-notes/${this.id}`]);
+    this.router.navigate([`/authored-notes`]);
   }
 }

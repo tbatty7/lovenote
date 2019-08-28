@@ -34,7 +34,7 @@ const routes: Routes = [
       [AuthGuard] },
   { path: 'create-account-failure', component: CreateAccountFailureComponent },
   { path: 'database-error', component: DatabaseErrorComponent },
-  { path: 'authored-notes/:id', component: AuthoredNotesComponent, canActivate:
+  { path: 'authored-notes', component: AuthoredNotesComponent, canActivate:
       [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
