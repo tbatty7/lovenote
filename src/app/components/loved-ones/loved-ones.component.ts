@@ -42,7 +42,7 @@ export class LovedOnesComponent implements OnInit {
       if (lovedOne.exists === true) {
         this.accountService.addLovedOne(name, this.id).subscribe((response) => {
           if (response === 'Update done') {
-            this.router.navigate([`/received-notes/${this.id}`]);
+            this.router.navigate([`/received-notes`]);
           } else {
             console.log(`ERROR ADDING LOVED ONE!! OH NOO!! - ${response}`);
             this.router.navigate(['/not-found']);
@@ -56,7 +56,7 @@ export class LovedOnesComponent implements OnInit {
   }
 
   goToReceivedNotes() {
-    this.router.navigate([`/received-notes/${this.id}`]);
+    this.router.navigate(['/received-notes']);
   }
 
 }

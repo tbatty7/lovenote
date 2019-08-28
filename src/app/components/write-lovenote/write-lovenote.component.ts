@@ -38,7 +38,7 @@ export class WriteLovenoteComponent implements OnInit {
     });
   }
   goToReceivedNotes() {
-    this.router.navigate([`/received-notes/${this.id}`]);
+    this.router.navigate(['/received-notes']);
   }
   sendNote(recipient, category, message) {
     this.noteService.sendNote(this.myAccount.name, recipient, category, message).subscribe((res) => {

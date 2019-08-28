@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         const data: any = res;
         if (data.success) {
           this.accountService.storeUserData(data.token, data.account);
-          this.router.navigate([`/received-notes/${data.account.id}`]);
+          this.router.navigate(['/received-notes']);
         } else {
           console.log('Error message when authenticating: ' + data.msg);
           this.router.navigate(['/failure']);

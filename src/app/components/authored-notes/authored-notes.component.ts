@@ -42,7 +42,7 @@ export class AuthoredNotesComponent implements OnInit {
   }
 
   public toNotes() {
-    this.router.navigate([`/received-notes/${this.id}`]);
+    this.router.navigate(['/received-notes']);
   }
 
   logout() {
