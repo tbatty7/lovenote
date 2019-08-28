@@ -32,7 +32,6 @@ export class LovedOnesComponent implements OnInit {
     this.id = JSON.parse(accountString).id;
     this.accountService.getAccount(this.id).subscribe((account) => {
       this.myAccount = account;
-      console.log(this.myAccount.lovedOnes);
     });
   }
 

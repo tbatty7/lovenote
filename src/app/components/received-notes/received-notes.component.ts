@@ -44,7 +44,6 @@ export class ReceivedNotesComponent implements OnInit {
   getNotes() {
     this.noteService.getNotesFor(this.myAccount.name).subscribe( (data: any) => {
       this.notes = data.notes;
-      console.log(this.notes);
     });
   }
 
