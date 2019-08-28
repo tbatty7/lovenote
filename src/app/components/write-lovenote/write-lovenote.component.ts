@@ -17,7 +17,11 @@ export class WriteLovenoteComponent implements OnInit {
   recipients;
   displayedColumns = ['recipient', 'category', 'message'];
   noteForm: FormGroup;
-  constructor(private accountService: AccountService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private noteService: NoteService) {
+  constructor( private accountService: AccountService,
+               private formBuilder: FormBuilder,
+               private route: ActivatedRoute,
+               private router: Router,
+               private noteService: NoteService ) {
     this.noteForm = this.formBuilder.group({
       recipient: '',
       category: '',
@@ -26,13 +30,11 @@ export class WriteLovenoteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params.id;
-      this.accountService.getAccount(this.id).subscribe((account: any) => {
-        this.myAccount = account;
-        this.recipients = this.myAccount.lovedOnes;
-        console.log(this.myAccount.lovedOnes);
-      });
+    const accountString = localStorage.getItem('account');
+    this.id = JSON.parse(accountString).id;
+    this.accountService.getAccount(this.id).subscribe((account: any) => {
+      this.myAccount = account;
+      this.recipients = this.myAccount.lovedOnes;
     });
   }
   goToReceivedNotes() {
@@ -40,7 +42,6 @@ export class WriteLovenoteComponent implements OnInit {
   }
   sendNote(recipient, category, message) {
     this.noteService.sendNote(this.myAccount.name, recipient, category, message).subscribe((res) => {
-      console.log(res);
       const response: any = res;
       if (response.message === 'Note Created!') {
         this.goToReceivedNotes();
