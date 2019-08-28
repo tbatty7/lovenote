@@ -33,7 +33,7 @@ export class AccountService {
     const token = this.getToken();
     const tokenNotNull = token !== null;
     const tokenNotExpired = !this.jwtHelper.isTokenExpired(token);
-    return tokenNotNull || tokenNotExpired;
+    return tokenNotNull && tokenNotExpired;
   }
 
   getAccount(id) {
