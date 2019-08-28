@@ -25,12 +25,11 @@ export class ReceivedNotesComponent implements OnInit {
   }
 
   private init() {
-    this.route.params.subscribe(params => {
-      this.id = params.id;
-      this.accountService.getAccount(this.id).subscribe((account) => {
-        this.myAccount = account;
-        this.getNotes();
-      });
+    const accountString = localStorage.getItem('account');
+    this.id = JSON.parse(accountString).id;
+    this.accountService.getAccount(this.id).subscribe((account) => {
+      this.myAccount = account;
+      this.getNotes();
     });
   }
 
