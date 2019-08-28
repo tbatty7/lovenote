@@ -26,12 +26,11 @@ export class AuthoredNotesComponent implements OnInit {
   }
 
   private init() {
-    this.route.params.subscribe(params => {
-      this.id = params.id;
-      this.accountService.getAccount(this.id).subscribe((account: any) => {
-        this.myAccount = account;
-        this.getMyNotes();
-      });
+    const accountString = localStorage.getItem('account');
+    this.id = JSON.parse(accountString).id;
+    this.accountService.getAccount(this.id).subscribe((account: any) => {
+      this.myAccount = account;
+      this.getMyNotes();
     });
   }
 
