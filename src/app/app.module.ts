@@ -22,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {LoginDialogComponent, LoginComponent} from './components/login/login.component';
 import { LoginFailureComponent } from './components/login-failure/login-failure.component';
-import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { CreateDialogComponent, CreateAccountComponent } from './components/create-account/create-account.component';
 import { ReceivedNotesComponent } from './components/received-notes/received-notes.component';
 import { LovedOnesComponent } from './components/loved-ones/loved-ones.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -64,6 +64,7 @@ const routes: Routes = [
     CreateAccountFailureComponent,
     DatabaseErrorComponent,
     LoginDialogComponent,
+    CreateDialogComponent,
     AuthoredNotesComponent
   ],
   imports: [
@@ -86,6 +87,6 @@ const routes: Routes = [
   ],
   providers: [AccountService, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [LoginDialogComponent]
+  entryComponents: [LoginDialogComponent, CreateDialogComponent]
 })
 export class AppModule { }
