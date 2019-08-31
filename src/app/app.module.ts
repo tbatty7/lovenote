@@ -2,13 +2,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
-import { ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 
-import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatIconModule, MatTableModule, MatButtonModule, MatCardModule, MatDividerModule, MatSnackBarModule} from '@angular/material';
+import {
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatIconModule,
+  MatTableModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatDialogModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import {LoginDialogComponent, LoginComponent} from './components/login/login.component';
 import { LoginFailureComponent } from './components/login-failure/login-failure.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { ReceivedNotesComponent } from './components/received-notes/received-notes.component';
@@ -51,6 +63,7 @@ const routes: Routes = [
     WriteLovenoteComponent,
     CreateAccountFailureComponent,
     DatabaseErrorComponent,
+    LoginDialogComponent,
     AuthoredNotesComponent
   ],
   imports: [
@@ -69,9 +82,10 @@ const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatDialogModule
   ],
   providers: [AccountService, AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginDialogComponent]
 })
 export class AppModule { }
