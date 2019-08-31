@@ -25,9 +25,7 @@ import { LoginFailureComponent } from './components/login-failure/login-failure.
 import { CreateDialogComponent, CreateAccountComponent } from './components/create-account/create-account.component';
 import { ReceivedNotesComponent } from './components/received-notes/received-notes.component';
 import { LovedOnesDialogComponent, LovedOnesComponent } from './components/loved-ones/loved-ones.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { WriteLovenoteComponent } from './components/write-lovenote/write-lovenote.component';
-import { CreateAccountFailureComponent } from './components/create-account-failure/create-account-failure.component';
 import { DatabaseErrorComponent } from './components/database-error/database-error.component';
 import { AuthoredNotesComponent } from './components/authored-notes/authored-notes.component';
 import { AuthGuard} from './services/auth.guard';
@@ -41,10 +39,8 @@ const routes: Routes = [
       [AuthGuard] },
   { path: 'loved-ones', component: LovedOnesComponent, canActivate:
       [AuthGuard] },
-  { path: 'not-found', component: NotFoundComponent },
   { path: 'write-lovenote', component: WriteLovenoteComponent, canActivate:
       [AuthGuard] },
-  { path: 'create-account-failure', component: CreateAccountFailureComponent },
   { path: 'database-error', component: DatabaseErrorComponent },
   { path: 'authored-notes', component: AuthoredNotesComponent, canActivate:
       [AuthGuard] },
@@ -59,9 +55,7 @@ const routes: Routes = [
     CreateAccountComponent,
     ReceivedNotesComponent,
     LovedOnesComponent,
-    NotFoundComponent,
     WriteLovenoteComponent,
-    CreateAccountFailureComponent,
     DatabaseErrorComponent,
     LoginDialogComponent,
     CreateDialogComponent,
