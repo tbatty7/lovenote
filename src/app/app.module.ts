@@ -24,7 +24,7 @@ import {LoginDialogComponent, LoginComponent} from './components/login/login.com
 import { LoginFailureComponent } from './components/login-failure/login-failure.component';
 import { CreateDialogComponent, CreateAccountComponent } from './components/create-account/create-account.component';
 import { ReceivedNotesComponent } from './components/received-notes/received-notes.component';
-import { LovedOnesComponent } from './components/loved-ones/loved-ones.component';
+import { LovedOnesDialogComponent, LovedOnesComponent } from './components/loved-ones/loved-ones.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { WriteLovenoteComponent } from './components/write-lovenote/write-lovenote.component';
 import { CreateAccountFailureComponent } from './components/create-account-failure/create-account-failure.component';
@@ -65,6 +65,7 @@ const routes: Routes = [
     DatabaseErrorComponent,
     LoginDialogComponent,
     CreateDialogComponent,
+    LovedOnesDialogComponent,
     AuthoredNotesComponent
   ],
   imports: [
@@ -87,6 +88,6 @@ const routes: Routes = [
   ],
   providers: [AccountService, AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [LoginDialogComponent, CreateDialogComponent]
+  entryComponents: [LoginDialogComponent, CreateDialogComponent, LovedOnesDialogComponent]
 })
 export class AppModule { }

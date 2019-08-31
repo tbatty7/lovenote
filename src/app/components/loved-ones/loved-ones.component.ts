@@ -1,7 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../../services/account.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {LoginDialogComponent} from '../login/login.component';
+
+export interface DialogData {
+  message: string;
+}
 
 @Component({
   selector: 'app-loved-ones',
@@ -17,7 +23,8 @@ export class LovedOnesComponent implements OnInit {
   constructor( private accountService: AccountService,
                private formBuilder: FormBuilder,
                private route: ActivatedRoute,
-               private router: Router) {
+               private router: Router,
+               private dialog: MatDialog) {
     this.addlovedonesForm = this.formBuilder.group({
       name: ['', Validators.required]
     });
@@ -41,21 +48,45 @@ export class LovedOnesComponent implements OnInit {
       if (lovedOne.exists === true) {
         this.accountService.addLovedOne(name, this.id).subscribe((response) => {
           if (response === 'Update done') {
-            this.router.navigate([`/received-notes`]);
+            this.openDialog(name + ' has been added to your loved ones.');
+            this.goToReceivedNotes();
           } else {
             console.log(`ERROR ADDING LOVED ONE!! OH NOO!! - ${response}`);
-            this.router.navigate(['/not-found']);
+            this.openDialog('There was a problem with the database, please try again');
           }
         });
       } else {
         console.log('loved one does not have an account');
-        this.router.navigate([`/not-found`]);
+        this.openDialog('There is no account under the name of ' + name);
       }
     });
   }
 
   goToReceivedNotes() {
     this.router.navigate(['/received-notes']);
+  }
+
+  openDialog(errorMessage): void {
+    this.dialog.open(LoginDialogComponent, {
+      width: '250px',
+      data: {message: errorMessage}
+    });
+  }
+}
+
+@Component({
+  selector: 'app-dialog-overview-example-dialog',
+  templateUrl: '../login/dialog-overview-example-dialog.html',
+  styleUrls: ['../login/login.component.css']
+})
+export class LovedOnesDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<LovedOnesDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  exit(): void {
+    this.dialogRef.close();
   }
 
 }
