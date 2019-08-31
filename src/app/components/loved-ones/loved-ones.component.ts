@@ -82,6 +82,10 @@ export class LovedOnesComponent implements OnInit {
 export class LovedOnesDialogComponent {
 
   constructor(
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
+  exit(): void {
+    this.dialogRef.close();
+  }
 }
