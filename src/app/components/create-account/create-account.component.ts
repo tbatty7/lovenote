@@ -45,7 +45,7 @@ export class CreateAccountComponent implements OnInit {
           }
         });
       } else {
-        this.openDialog('Sorry, that name is already in use.  Please try another name');
+        this.openDialog('Sorry, that name is already in use.  Please try using your last name too.  Names are case sensitive.');
       }
     });
   }
